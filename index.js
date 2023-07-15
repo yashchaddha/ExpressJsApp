@@ -1,6 +1,10 @@
 const express=require('express');
 const app=express();
-const port=8000;
+const port=8080;
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 //use express router
 app.use('/',require('./routes/index'));
