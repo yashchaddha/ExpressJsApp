@@ -15,6 +15,9 @@ module.exports.todo=function(req,res){
             date:new Date().toISOString().split('T')[0],
             priority:"Critical"
         }]
+    
+    console.log(res.body);
+
     return res.render('todo',{
         todotasks:tasks
     })

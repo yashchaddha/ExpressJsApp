@@ -9,8 +9,10 @@
     <div class="container">
         <h1>Hi Yash! Here's Your Todo List</h1>
         <div class="add-task">
-            <input type="text" placeholder="Add a task">
-            <button>Add</button>
+            <form action="/todolist" method="post">
+                <input type="text" placeholder="Add a task" name="taskDescription">
+                <button type="submit">Add</button>
+            </form>
         </div>
         <br>
         <div id="tasks">
