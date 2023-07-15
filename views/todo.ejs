@@ -1,9 +1,7 @@
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
+    <title>ToDo List</title>
     <link rel="stylesheet" href="/css/todo.css">
 </head>
 
@@ -16,14 +14,12 @@
         </div>
         <br>
         <div id="tasks">
+            <%for(let i of todotasks){%>
             <div class="todo-item">
                 <input type="checkbox">
-                <label>Task 1</label>
+                <label><%= i.description%></label>
             </div>
-            <div class="todo-item">
-                <input type="checkbox">
-                <label>Task 2</label>
-            </div>
+            <%}%>
         </div>   
     </div>
     <script type="text/script" src="../assets/js/todo.js"></script>

@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-    max-width: 70%;
+    max-width: 70vw;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
@@ -58,7 +58,7 @@ h1 {
     border: none;
     color: #fff;
     border-radius: 4px;
-    cursor: pointer;
+    cursor:pointer;
 }
 
 @media (max-width: 600px) {
