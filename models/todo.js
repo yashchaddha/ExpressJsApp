@@ -15,7 +15,10 @@ const todoSchema=new mongoose.Schema({
     },
     date:{
         type:Date,
-        required:true
+        required:true,
+        get: function (value) {
+            return value.toISOString().split('T')[0];
+        }
     }
 });
 
