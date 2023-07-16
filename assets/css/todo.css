@@ -20,6 +20,7 @@ h1 {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    background-color: pink;
 }
 
 .todo-item input[type="checkbox"] {

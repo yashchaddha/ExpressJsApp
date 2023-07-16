@@ -11,6 +11,16 @@
         <div class="add-task">
             <form action="/todolist/create-task" method="POST">
                 <input type="text" placeholder="Add a task" name="taskDescription">
+
+                <select name="priority" id="priority">
+                    <option value="Regular" selected>Regular</option>
+                    <option value="High">High</option>
+                    <option value="Critical">Critical</option>
+                </select>
+                
+                <label for="datepicker">Select the due date:</label>
+                <input type="date" id="datepicker" name="datepicker">
+
                 <button type="submit">Add</button>
             </form>
         </div>
@@ -26,7 +36,7 @@
             <%}%>
         </div>   
     </div>
-    <script type="text/script" src="../assets/js/todo.js"></script>
+    <script type="text/javascript" src="/js/todo.js"></script>
 </body>
 
 </html>
