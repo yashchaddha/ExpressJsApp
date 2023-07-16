@@ -1,3 +1,6 @@
+
+const TodoLists=require('../models/todo');
+
 var tasks=[
     {
         description:"Go to Gym",
@@ -19,17 +22,29 @@ var tasks=[
     }]
 
 module.exports.todo=function(req,res){
+    
     return res.render('todo',{
         todotasks:tasks
     })
 }
 
 module.exports.addTasks=function(req,res){
-    tasks.push({
+    // tasks.push({
+    //     description:req.body.taskDescription,
+    //     date: req.body.datepicker,
+    //     priority:req.body.priority,
+    //     category:req.body.category
+    // })
+    TodoLists.create({
         description:req.body.taskDescription,
         date: req.body.datepicker,
         priority:req.body.priority,
         category:req.body.category
+    }).then(newTask=>{
+        console.log(newTask);
+        return res.redirect('back');
+    }).catch(error=>{
+        console.log(error);
+        return;
     })
-    return res.redirect('back');
 }
