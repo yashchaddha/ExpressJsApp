@@ -13,6 +13,14 @@
             <form action="/todolist/create-task" method="POST">
                 <input type="text" placeholder="Add a task" name="taskDescription" required>
 
+                <select name="category">
+                    <option value="Work" selected>Work</option>
+                    <option value="School">School</option>
+                    <option value="Family">Family</option>
+                    <option value="Friends">Friends</option>
+                    <option value="Personal">Personal</option>
+                </select>
+
                 <select name="priority">
                     <option value="Regular" selected>Regular</option>
                     <option value="High">High</option>
@@ -31,6 +39,7 @@
             <div class="todo-item">
                 <input type="checkbox">
                 <label id="description"><%= i.description%></label>
+                <label id="category"><%= i.category%></label>
                 <label id="priorities"><%= i.priority%></label>
                 <label id="date"><%= i.date%></label>
                 <a href="/"><i class="fa-sharp fa-solid fa-trash"></i></a>
