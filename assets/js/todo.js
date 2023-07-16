@@ -15,21 +15,22 @@ datepicker.setAttribute('min',minDate)
 
 
 //providing color to Tasks according to their priority
-var prioritySelect = document.getElementById('priority');
-    var todoItems = document.getElementsByClassName('todo-item');
+var todoItems = document.getElementsByClassName('todo-item');
 
-    prioritySelect.addEventListener('change', function() {
-        var selectedPriority = prioritySelect.value;
 
-        for (var i = 0; i < todoItems.length; i++) {
-            var todoItem = todoItems[i];
-
-            if (selectedPriority === 'Regular') {
-                todoItem.style.backgroundColor = 'Green';
-            } else if (selectedPriority === 'High') {
-                todoItem.style.backgroundColor = 'orange';
-            } else {
-                todoItem.style.backgroundColor = 'red'; 
-            }
+function changeColor(selectedPriority,i) {
+        if (selectedPriority === 'Regular') {
+            todoItems[i].style.backgroundColor = 'lightgreen';
+        } else if (selectedPriority === 'High') {
+            todoItems[i].style.backgroundColor = 'rgb(237, 125, 88)';
+        } else {
+            todoItems[i].style.backgroundColor = 'rgb(247, 47, 47)'; 
         }
-    });
+}
+
+for (let i = 0; i < todoItems.length; i++) {
+    var prioritySelect = document.getElementById('priorities');
+    var selectedPriority = todoItems[i].querySelector('#priorities').textContent;
+    console.log(selectedPriority,i)
+    changeColor(selectedPriority,i);
+}

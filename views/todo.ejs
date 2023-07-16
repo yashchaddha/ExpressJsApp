@@ -2,6 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/todo.css">
 </head>
 
@@ -10,16 +11,16 @@
         <h1>Hi Yash! Here's Your Todo List</h1>
         <div class="add-task">
             <form action="/todolist/create-task" method="POST">
-                <input type="text" placeholder="Add a task" name="taskDescription">
+                <input type="text" placeholder="Add a task" name="taskDescription" required>
 
-                <select name="priority" id="priority">
+                <select name="priority">
                     <option value="Regular" selected>Regular</option>
                     <option value="High">High</option>
                     <option value="Critical">Critical</option>
                 </select>
                 
                 <label for="datepicker">Select the due date:</label>
-                <input type="date" id="datepicker" name="datepicker">
+                <input type="date" id="datepicker" name="datepicker" required>
 
                 <button type="submit">Add</button>
             </form>
@@ -29,9 +30,10 @@
             <%for(let i of todotasks){%>
             <div class="todo-item">
                 <input type="checkbox">
-                <label><%= i.description%></label>
-                <label><%= i.priority%></label>
-                <label><%= i.date%></label>
+                <label id="description"><%= i.description%></label>
+                <label id="priorities"><%= i.priority%></label>
+                <label id="date"><%= i.date%></label>
+                <a href="/"><i class="fa-sharp fa-solid fa-trash"></i></a>
             </div>
             <%}%>
         </div>   
