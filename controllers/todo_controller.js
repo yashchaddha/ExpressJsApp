@@ -24,8 +24,8 @@ module.exports.todo=function(req,res){
 module.exports.addTasks=function(req,res){
     tasks.push({
         description:req.body.taskDescription,
-        date: new Date().toISOString().split('T')[0],
-        priority:"Regular"
+        date: req.body.datepicker,
+        priority:req.body.priority
     })
     return res.redirect('back');
 }
