@@ -64,6 +64,11 @@ h1 {
     cursor:pointer;
 }
 
+#delete-multiple-tasks{
+    background-color: grey;
+    
+}
+
 @media (max-width: 600px) {
     .container {
         max-width: 100%;

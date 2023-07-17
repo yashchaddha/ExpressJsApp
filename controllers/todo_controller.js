@@ -1,4 +1,3 @@
-
 const TodoLists=require('../models/todo');
 
 
@@ -10,6 +9,7 @@ module.exports.todo=function(req,res){
         })
     })
 }
+
 //add tasks to database
 module.exports.addTasks=function(req,res){
     TodoLists.create({
@@ -19,14 +19,14 @@ module.exports.addTasks=function(req,res){
         category:req.body.category,
         completed:false
     }).then(newTask=>{
-        console.log(newTask);
         return res.redirect('back');
     }).catch(error=>{
         console.log(error);
         return;
     })
 }
-//delete tasks from database
+
+//delete task from database
 module.exports.deleteTasks=function(req,res){
     let id=req.query.id;
     TodoLists.findByIdAndDelete(id).then(todotasks=>{

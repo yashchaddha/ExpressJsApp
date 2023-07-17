@@ -30,8 +30,9 @@
                 <label for="datepicker">Select the due date:</label>
                 <input type="date" id="datepicker" name="datepicker" required>
 
-                <button type="submit">Add</button>
+                <button type="submit">Add Tasks</button>
             </form>
+            <button type="delete" id="delete-multiple-tasks" onclick="deleteChecked()">Delete Tasks</button>
         </div>
         <br>
         <div id="tasks">
@@ -47,6 +48,7 @@
             <%}%>
         </div>   
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/todo.js"></script>
 </body>
 
