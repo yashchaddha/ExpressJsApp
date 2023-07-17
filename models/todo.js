@@ -19,6 +19,9 @@ const todoSchema=new mongoose.Schema({
         get: function (value) {
             return value.toISOString().split('T')[0];
         }
+    },
+    completed:{
+        type:Boolean
     }
 });
 

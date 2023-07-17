@@ -37,12 +37,12 @@
         <div id="tasks">
             <%for(let i of todotasks){%>
             <div class="todo-item">
-                <input type="checkbox">
+                <input type="checkbox" name="deletecheck" id="delete-check" uid="<%=i._id%>" onclick="checkedOrNot()">
                 <label id="description"><%= i.description%></label>
                 <label id="category"><%= i.category%></label>
                 <label id="priorities"><%= i.priority%></label>
                 <label id="date"><%= i.date%></label>
-                <a href="/"><i class="fa-sharp fa-solid fa-trash"></i></a>
+                <a href="/todolist/delete-task?id=<%= i._id %>"><i class="fa-sharp fa-solid fa-trash"></i></a>
             </div>
             <%}%>
         </div>   
