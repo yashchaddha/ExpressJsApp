@@ -1,3 +1,9 @@
+$(document).ready(function() {
+    for(let i=0;i<todoItems.length;i++){
+        console.log(todoItems[i].querySelector('#completed').textContent);
+    }
+});
+
 const datepicker = document.getElementById('datepicker');
 
 // Get the current date
@@ -9,7 +15,6 @@ if (month < 10) {
 }
 const day = currentDate.getDate();
 const minDate = `${year}-${month}-${day}`;
-console.log(minDate);
 // Set the minimum date for the date picker
 datepicker.setAttribute('min',minDate)
 
@@ -31,7 +36,6 @@ function changeColor(selectedPriority,i) {
 for (let i = 0; i < todoItems.length; i++) {
     var prioritySelect = document.getElementById('priorities');
     var selectedPriority = todoItems[i].querySelector('#priorities').textContent;
-    console.log(selectedPriority,i)
     changeColor(selectedPriority,i);
 }
 //collecting all the ids of tasks currently checked by the user in Set
@@ -57,7 +61,20 @@ function checkedOrNot(){
             selectedTasks.delete(taskId);
         }
     }
-    // console.log(selectedTasks)
+    for (const item of selectedTasks) {
+        //sending ajax request to update pending task status
+            $.ajax({
+                type:'post',
+                url:'/todolist/update-task/?id='+item,
+                success:function(){
+                    console.log("Updated the value of this task");
+                },
+                error:function(error){
+                    console.log(error);
+                    window.history.back();
+                }
+            })
+      }
 }
 
 
@@ -66,7 +83,6 @@ function checkedOrNot(){
 function deleteChecked(){
     var checkedTasks=[...selectedTasks];
     for(let i=0;i<checkedTasks.length;i++){
-        console.log("entered in loop");
         $.ajax({
             type:'get',
             url:'/todolist/delete-task/?id='+checkedTasks[i],

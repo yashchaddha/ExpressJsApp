@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: lightgrey;
+    background-color: lightgray;
 }
 
 .container {
@@ -67,6 +67,10 @@ h1 {
 #delete-multiple-tasks{
     background-color: grey;
     
+}
+
+#completed{
+    display:none;
 }
 
 @media (max-width: 600px) {
