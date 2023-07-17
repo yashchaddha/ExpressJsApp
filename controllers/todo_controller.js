@@ -32,3 +32,22 @@ module.exports.deleteTasks=function(req,res){
     TodoLists.findByIdAndDelete(id).then(todotasks=>{
         return res.redirect('back')})
 }
+
+//update the status of the task when checked
+module.exports.updateTasks=function(req,res){
+    let todoId=req.query.id;
+    TodoLists.findById(todoId).then(todo => {
+    if (!todo) {
+      console.log('Todo not found');
+      return;
+    }
+    todo.completed = !todo.completed; // Toggle the value of the completed field
+    return todo.save();
+  })
+  .then(updatedTodo => {
+    console.log(updatedTodo);
+  })
+  .catch(err => {
+    console.error(err);
+  });
+}
