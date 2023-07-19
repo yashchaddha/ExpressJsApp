@@ -41,11 +41,13 @@ module.exports.updateTasks=function(req,res){
       console.log('Todo not found');
       return;
     }
+    console.log(todo.completed);
     todo.completed = !todo.completed; // Toggle the value of the completed field
+    console.log(todo.completed);
     return todo.save();
   })
   .then(updatedTodo => {
-    console.log(updatedTodo);
+    console.log(updatedTodo.completed);
   })
   .catch(err => {
     console.error(err);
