@@ -13,7 +13,6 @@ $(document).ready(function () {
       selectedTasks.add(taskId);
     }
   }
-  console.log(selectedTasks);
 });
 
 const datepicker = document.getElementById("datepicker");
@@ -53,18 +52,18 @@ let selectedTasks = new Set();
 let unselectedTasks = new Set();
 
 function checkedOrNot(id) {
-
   const checkbox = document.querySelector('input[uid="' + id + '"]');
-  const descriptionLabel = document.querySelector('label#description');
-  const dateLabel = document.querySelector('label#date');
+  const descriptionLabel = document.querySelector('label[uid="' + id + '"][id="description"]');
+  const dateLabel = document.querySelector('label[uid="' + id + '"][id="date"]');
 
-  console.log(checkbox,descriptionLabel,dateLabel)
   if (checkbox.checked) {
     descriptionLabel.style.textDecoration = 'line-through';
     dateLabel.style.textDecoration = 'line-through';
+    selectedTasks.add(id);
   } else {
     descriptionLabel.style.textDecoration = 'none';
     dateLabel.style.textDecoration = 'none';
+    selectedTasks.delete(id);
   }
   $.ajax({
     type: "post",
@@ -77,37 +76,6 @@ function checkedOrNot(id) {
       window.history.back();
     },
   });
-
-  // for(let i=0;i<description.length;i++){
-  //     var taskId=cb[i].getAttribute('uid');
-  //     if(cb[i].checked==true){
-
-  //         selectedTasks.add(taskId);
-  //         unselectedTasks.delete(taskId);
-  //     }
-  //     else{
-  //         description[i].style.textDecoration='none';
-  //         date[i].style.textDecoration='none';
-  //         selectedTasks.delete(taskId);
-  //         unselectedTasks.add(taskId);
-  //     }
-  // }
-  // console.log(selectedTasks);
-  // console.log(unselectedTasks);
-  // for (const item of selectedTasks) {
-  //     //sending ajax request to update pending task status
-  //         $.ajax({
-  //             type:'post',
-  //             url:'/todolist/update-task/?id='+item,
-  //             success:function(){
-  //                 console.log("Updated the value of this task");
-  //             },
-  //             error:function(error){
-  //                 console.log(error);
-  //                 window.history.back();
-  //             }
-  //         })
-  //   }
 }
 
 //using the Ajax request to delete the items checked
