@@ -11,7 +11,9 @@
     "express-ejs-layouts": "^2.5.1",
     "mongoose": "^7.3.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  },
   "scripts": {
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
