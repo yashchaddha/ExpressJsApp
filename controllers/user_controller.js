@@ -12,9 +12,8 @@ module.exports.signup=function(req,res){
 module.exports.login=function(req,res){
     return res.render('userLogin');
 }
-
+//User Signup
 module.exports.createUser=function(req,res){
-    console.log(req.body);
     if(req.body.password!=req.body.confirmpassword){
         console.log('Password Does not match');
         return res.redirect('back');
@@ -36,17 +35,31 @@ module.exports.createUser=function(req,res){
         }
     })
 }
+
+//User Login
 module.exports.createSession=function(req,res){
-    return res.end('<h1>User logged in Successfully</h1>')
+    Users.findOne({email:req.body.email}).then(user=>{
+        //check if password is matching
+        if(req.body.psw==user.password){
+            //create session for the user
+            res.cookie('user_id',user._id);
+            return res.render('userProfile',{user});
+        }
+        else{
+            console.log('Invalid Password');
+            return res.redirect('back');
+        }
+    }).catch(error=>{
+        console.log("User Not found with this Email");
+        return res.redirect('back');
+    })
 }
 
-
-
-// if(!user){
-        //     Users.create(req.body).then(user=>console.log('User created successfully',user)).catch(error=>console.log(error));
-        //     return res.redirect('userLogin');
-        // }
-        // else{
-        //     console.log('User already exists');
-        //     return res.redirect('back');
-        // }
+//Logging out User
+module.exports.logout=function(req,res){
+    res.clearCookie('user_id');
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    return res.end("<h1>Logged out Successfully</h1>");
+}
