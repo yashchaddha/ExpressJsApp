@@ -41,6 +41,6 @@ module.exports.createAdmin=function(req,res){
 
 //admin Login
 module.exports.createSession=function(req,res){
-    console.log('Hello');
-    return res.redirect('/');
+    console.log(req.body);
+    return res.render('adminProfile',{details:req.body});
 }

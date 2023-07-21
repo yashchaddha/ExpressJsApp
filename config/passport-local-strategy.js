@@ -10,9 +10,7 @@ passport.use(new LocalStrategy({
     usernameField:'email'
 },
 function(email,password,done){
-    console.log('hello');
     Admin.findOne({email:email}).then(admin=>{
-        console.log('1');
         if(!admin||(admin.password!=password)){
             console.log("Invalid Username/Password");
             return done(null,false)
@@ -30,7 +28,6 @@ function(email,password,done){
 
 //Serializing the User
 passport.serializeUser(function(admin,done){
-    console.log('serialize');
     done(null,admin.id);
 });
 
