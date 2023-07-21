@@ -10,7 +10,7 @@ const expressLayouts=require('express-ejs-layouts');
 const session=require('express-session');
 const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy');
-const flash = require('connect-flash');//for flash messages
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -30,7 +30,7 @@ app.set('views','./views');
 //middleware for creating a session cookie for admin login
 app.use(session({
     name:'expresstodolist',
-    secret: 'blahsomething',
+    secret: 'yash',
     saveUninitialized: false,
     resave: false,
     cookie: {
@@ -38,7 +38,6 @@ app.use(session({
     }
 }));
 
-app.use(flash());
 
 
 app.use(passport.initialize());

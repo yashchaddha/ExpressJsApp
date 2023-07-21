@@ -11,7 +11,7 @@ router.get('/login',adminController.login);
 router.post('/create-admin',adminController.createAdmin);
 router.post('/create-session',passport.authenticate(
     'local',
-    {failureRedirect:'/admin/signup',failureFlash:true},
+    {failureRedirect:'/admin/signup'},
 ),adminController.createSession);
 
 module.exports=router
