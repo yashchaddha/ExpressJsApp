@@ -12,7 +12,7 @@ router.post('/create-admin',adminController.createAdmin);
 router.post('/create-session',passport.authenticate(
     'local',
     {failureRedirect:'/admin/login'},
-),adminController.createSession);
+),passport.setAuthAdmin,adminController.createSession);
 router.get('/profile',passport.checkAuth,adminController.profile);
 
 router.get('/logout',adminController.destroySession);

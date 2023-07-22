@@ -50,10 +50,11 @@ passport.checkAuth=function(req,res,next){
 }
 
 passport.setAuthAdmin=function(req,res,next){
-    if(req.isAuthenticated){        
-        res.locals.admin=req.user;    
+    if(req.isAuthenticated){ 
+        console.log("From Local Strategy",req.user);      
+        res.locals.user=req.user;          
     }
-    next();
+    next(); 
 }
 
 module.exports=passport;

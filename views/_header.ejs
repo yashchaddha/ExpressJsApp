@@ -1,9 +1,9 @@
 <header>
   Page headers
   <ul>
-        <% if(locals.admin){%>
+        <% if(locals.user){ console.log("From header",locals.user)%>
          <li>
-            <a href="/admin/profile"><%= admin.name%></a>
+            <a href="/admin/profile"><%= user.name%></a>
          </li>
          <li>
             <a href="/admin/logout">Logout</a>

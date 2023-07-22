@@ -52,9 +52,12 @@ app.use(session({
 
 
 app.use(passport.initialize());
+
 app.use(passport.session());
 
-app.use(passport.setAuthAdmin);
+
+// app.use(passport.setAuthAdmin);
+
 
 
 //use express router
