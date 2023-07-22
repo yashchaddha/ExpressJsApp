@@ -47,7 +47,8 @@ module.exports.createAdmin=function(req,res){
 
 //admin Login
 module.exports.createSession=function(req,res){
-    return res.render('adminProfile',{details:req.body});
+    // return res.render('adminProfile',{details:req.body});
+    return res.redirect('/todolist');
 }
 
 module.exports.profile=function(req,res){
