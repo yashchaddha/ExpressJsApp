@@ -1,3 +1,20 @@
 <header>
-    Page headers
+  Page headers
+  <ul>
+        <% if(locals.admin){%>
+         <li>
+            <a href="/admin/profile"><%= admin.name%></a>
+         </li>
+         <li>
+            <a href="/admin/logout">Logout</a>
+         </li>
+        <%}else{%>
+            <li>
+                <a href="/admin/signup">Signup</a>
+            </li>
+            <li>
+                <a href="/admin/login">Login</a>
+            </li>
+        <%}%>
+  </ul>
 </header>
