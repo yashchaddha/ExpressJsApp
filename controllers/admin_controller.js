@@ -2,7 +2,7 @@ const Admins=require('../models/admin')
 
 
 module.exports.admin=function(req,res){
-    return res.end('<h1>Admin controller is working</h1>');
+    return res.render('adminProfile');
 }
 
 
@@ -47,7 +47,6 @@ module.exports.createAdmin=function(req,res){
 
 //admin Login
 module.exports.createSession=function(req,res){
-    console.log(req.body);
     return res.render('adminProfile',{details:req.body});
 }
 

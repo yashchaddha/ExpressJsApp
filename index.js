@@ -10,6 +10,7 @@ const expressLayouts=require('express-ejs-layouts');
 const session=require('express-session');
 const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy');
+const MongoStore=require('connect-mongo');
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -35,14 +36,20 @@ app.use(session({
     resave: false,
     cookie: {
         maxAge: (1000 * 60 * 100)
-    }
+    },
+    store: new MongoStore({
+        mongoUrl: 'mongodb://localhost:27017/todolist',
+        autoRemove:'disabled'
+    },
+    function(err){
+        if(err){
+            console.log(err || "connect-mongo-setup okay")
+        }
+    })
 }));
 
 app.use(passport.setAuthAdmin)
-// app.use(function(req, res, next) {
-//     res.locals.admin = req.user;
-//     next();
-// });
+
 
 app.use(passport.initialize());
 app.use(passport.session());
