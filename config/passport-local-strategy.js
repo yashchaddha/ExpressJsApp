@@ -50,9 +50,8 @@ passport.checkAuth=function(req,res,next){
 }
 
 passport.setAuthAdmin=function(req,res,next){
-    if(req.isAuthenticated){
-        //setting the user which was authenticated
-        res.locals.admin=req.admin;
+    if(req.isAuthenticated){        
+        res.locals.admin=req.user;    
     }
     next();
 }

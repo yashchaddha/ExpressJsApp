@@ -51,5 +51,17 @@ module.exports.createSession=function(req,res){
 }
 
 module.exports.profile=function(req,res){
-   return res.end('<h1>Heyy Yash</h1>');
+   return res.end("<h1>Heyyyy</h1>");
+}
+
+//admin logging out
+module.exports.destroySession=function(req,res){
+    req.logout(function (err) {
+        if (err) {
+          // Handle any potential error during logout
+          console.log('Error during logout:', err);
+        }
+        // Redirect the user to the login page after successful logout
+        return res.redirect('/admin/login');
+      });
 }
