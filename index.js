@@ -38,10 +38,15 @@ app.use(session({
     }
 }));
 
-
+app.use(passport.setAuthAdmin)
+// app.use(function(req, res, next) {
+//     res.locals.admin = req.user;
+//     next();
+// });
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 //use express router
 app.use('/',require('./routes'));

@@ -7,10 +7,16 @@ module.exports.admin=function(req,res){
 
 
 module.exports.signup=function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect('/admin/profile');
+    }
     return res.render('adminSignup');
 }
 
 module.exports.login=function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect('/admin/profile');
+    }
     return res.render('adminLogin');
 }
 
@@ -43,4 +49,8 @@ module.exports.createAdmin=function(req,res){
 module.exports.createSession=function(req,res){
     console.log(req.body);
     return res.render('adminProfile',{details:req.body});
+}
+
+module.exports.profile=function(req,res){
+   return res.end('<h1>Heyy Yash</h1>');
 }

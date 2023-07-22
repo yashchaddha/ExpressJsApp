@@ -13,5 +13,6 @@ router.post('/create-session',passport.authenticate(
     'local',
     {failureRedirect:'/admin/login'},
 ),adminController.createSession);
+router.get('/profile',passport.checkAuth,adminController.profile);
 
 module.exports=router
