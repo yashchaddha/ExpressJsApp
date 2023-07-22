@@ -25,7 +25,6 @@ function(email,password,done){
     });
 }));
 
-
 //Serializing the User
 passport.serializeUser(function(admin,done){
     done(null,admin.id);
@@ -34,11 +33,28 @@ passport.serializeUser(function(admin,done){
 //Deserializing the User
 passport.deserializeUser(function(id,done){
     Admin.findById(id).then(admin=>{
-        console.log(admin);
         return done(null,admin);
     }).catch(error=>{
         console.log(error);
     })
-})
+});
+
+//check if the user is authenticated
+passport.checkAuth=function(req,res,next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    else{
+        return res.redirect('/admin/signup');
+    }
+}
+
+passport.setAuthAdmin=function(req,res,next){
+    if(req.isAuthenticated){
+        //setting the user which was authenticated
+        res.locals.admin=req.admin;
+    }
+    next();
+}
 
 module.exports=passport;
